@@ -19,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
   </head>
   <body class="bg-blue-200 min-h-screen">
+    <!-- header section -->
     <header class="bg-[#f0f8ff] p-4">
       <h1 class="text-center text-3xl font-bold text-black">
         Accurate Weather Forecast
@@ -26,6 +27,7 @@
     </header>
     <main
       class="main max-w-[1200px] p-4 mx-auto grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Search input, currenloaction and recent searches dropdown -->
       <div
         class="container max-w-lg col-span-1 mx-auto mt-4 bg-[#f0f8ff] h-fit shadow-2xl rounded-xl p-4">
         <div class="">
@@ -55,14 +57,16 @@
           </div>
         </div>
       </div>
+      <!-- weather section container -->
       <div
         class="weather-container hide mt-4 w-full col-span-1 lg:col-span-2 gap-3">
+        <!-- current weather display container -->
         <div
           id="currentWeather"
           class="text-center text-gray-800 text-lg font-semibold">
           Enter city name / use current location to see weather report...
         </div>
-
+        <!-- forecast container -->
         <div
           class="max-w-[1200px] col-span-1 lg:col-span-2 mt-4 mx-auto flex flex-col gap-4 text-gray-800">
           <h2 class="text-2xl font-semibold text-left text-gray-700">
@@ -74,9 +78,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="text-center mt-4">
-        Enter city name / use current location to see weather report...
-      </div> -->
       <div class="notification text-center mt-4">
         Enter city name / use current location to see weather report...
       </div>
