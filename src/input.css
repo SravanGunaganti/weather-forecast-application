@@ -1,1 +1,80 @@
 @import "tailwindcss";
+
+.hide{
+    @apply hidden;
+}
+
+.display-grid{
+    @apply grid;
+}
+
+.display-loader{
+    @apply max-w-lg grid grid-cols-[40px_auto] items-center justify-center gap-4 bg-[#f0f8ff] p-8 mx-auto rounded-lg ;
+}
+
+.loader{
+   @apply w-10 h-10 border-4 border-orange-500 border-l-transparent rounded-full animate-spin;
+}
+
+.display-error{
+    @apply border-x-[4px] border-red-600;
+}
+
+.error-icon{
+    @apply bg-red-600 text-white h-[40px] w-[40px] text-[25px] flex justify-center items-center rounded-full font-extrabold;
+}
+
+.left-text{
+    @apply text-left;
+}
+.error-label{
+    @apply text-red-600 font-bold;
+}
+
+.today-weather{
+    @apply bg-cyan-400 text-blue-950 col-span-1  w-full p-4 rounded-lg shadow-lg flex justify-between items-center space-x-4;
+}
+.location-nam{
+    @apply text-xl md:text-3xl capitalize;
+}
+.location-date{
+    @apply text-sm md:text-xl capitalize;
+}
+
+.today-weather .temp {
+    @apply text-4xl md:text-6xl lg:text-7xl;
+}
+
+.today-weather > .wind-humidity {
+    @apply text-lg md:text-2xl;
+}
+
+.weather-icon-description{
+   @apply flex flex-col justify-center items-center;
+}
+.weather-icon-description > img{
+    @apply w-20 h-20 md:w-28 md:h-28;
+}
+.weather-icon-description > p{
+    @apply text-[12px] md:text-lg capitalize;
+}
+
+.forecast-card{
+    @apply flex justify-center items-center gap-3 bg-[#c8e8f7] p-2 rounded-lg shadow-md;
+}
+.forecast-img-description{
+    @apply flex flex-col justify-center items-center;
+}
+.forecast-img{
+    @apply flex flex-col justify-center items-center;
+}
+.forecast-img-description > P{
+    @apply capitalize;
+}
+
+.forecast-text-card{
+    @apply flex flex-col justify-center gap-2;
+}
+.forecast-date{
+    @apply text-lg font-bold;
+}
