@@ -53,28 +53,28 @@
    @apply flex flex-col justify-center items-center;
 }
 .weather-icon-description > img{
-    @apply w-20 h-20 md:w-28 md:h-28;
+    @apply w-24 h-24 md:w-28 md:h-28;
 }
 .weather-icon-description > p{
-    @apply text-[12px] md:text-lg capitalize;
+    @apply text-[16px] md:text-lg capitalize;
 }
 
 .forecast-card{
-    @apply flex justify-center items-center gap-3 bg-[#c8e8f7] p-2 rounded-lg shadow-md;
+    @apply flex justify-evenly md:justify-center items-center gap-3 bg-[#c8e8f7] p-2 rounded-lg shadow-md;
 }
 .forecast-img-description{
     @apply flex flex-col justify-center items-center;
 }
 .forecast-img{
-    @apply flex flex-col justify-center items-center;
+    @apply  w-20 h-20;
 }
 .forecast-img-description > P{
-    @apply capitalize;
+    @apply capitalize  text-sm md:text-xl;
 }
 
 .forecast-text-card{
     @apply flex flex-col justify-center gap-2;
 }
 .forecast-date{
-    @apply text-lg font-bold;
+    @apply font-bold;
 }
