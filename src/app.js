@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const API_KEY = "1e247c768bb5ebd8ad5cca511a9a4f51";
   const API_BASE_URL = "https://api.openweathermap.org/data/2.5/";
-  
+
   const mainContainer = document.querySelector(".main");
   const searchInput = document.getElementById("search");
   const searchButton = document.getElementById("searchBtn");
   const useCurrentLocation = document.getElementById("currentLocation");
-  const recentSearchesContainer = document.querySelector(".recent-searches-container");
+  const recentSearchesContainer = document.querySelector(
+    ".recent-searches-container"
+  );
   const recentSearchesDropdown = document.getElementById("recentSearches");
   const weatherSection = document.querySelector(".weather-container");
   const weatherContainer = document.getElementById("currentWeather");
@@ -127,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
           undefined,
           {
             weekday: "long",
-            day: "numeric", 
+            day: "numeric",
             month: "long",
           }
         );
@@ -161,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getRecentSearches(city);
   }
 
-  function getRecentSearches(active=null) {
+  function getRecentSearches(active = null) {
     let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
     if (searches?.length > 0) {
       recentSearchesContainer.classList.remove("hidden");
@@ -179,40 +180,49 @@ document.addEventListener("DOMContentLoaded", () => {
     `
       )
       .join("");
-      recentSearchesDropdown.value=active;
+    recentSearchesDropdown.value = active;
   }
 
   //Getting current Weather data with Current Location
   function getCurrentLocationWeatherData() {
     if (!weatherSection.classList.contains("hide")) {
-      weatherSection.classList.add("hide");
+        weatherSection.classList.add("hide");
     }
     if (mainContainer.classList.contains("display-grid"))
-      mainContainer.classList.remove("display-grid");
+        mainContainer.classList.remove("display-grid");
     notification.innerHTML = loader;
 
-    // weatherContainer.innerHTML = loader;
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
-      try {
-        const response = await fetch(
-          `${API_BASE_URL}weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                const { latitude, longitude } = position.coords;
+                try {
+                    const response = await fetch(
+                        `${API_BASE_URL}weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+                    );
+                    if (!response.ok) throw new Error("Location not found");
+                    const data = await response.json();
+                    notification.innerHTML = "";
+                    weatherSection.classList.remove("hide");
+                    if (!weatherSection.classList.contains("display-grid")) {
+                        mainContainer.classList.add("display-grid");
+                    }
+                    displayCurrentWeatherData(data);
+                    storeRecentSearches(data.name);
+                    getForecastData(data.name);
+                } catch (error) {
+                    notification.innerHTML = errorCode(error.message);
+                }
+            },
+            () => {
+                notification.innerHTML = errorCode("Unable to get loacation.");
+            }
         );
-        if (!response.ok) throw new Error("Location not found");
-        const data = await response.json();
-        notification.innerHTML = "";
-        weatherSection.classList.remove("hide");
-        if (!weatherSection.classList.contains("display-grid")) {
-          mainContainer.classList.add("display-grid");
-        }
-        displayCurrentWeatherData(data);
-        storeRecentSearches(data.name);
-        getForecastData(data.name);
-      } catch (error) {
-        notification.innerHTML = errorCode(error.message);
-      }
-    });
-  }
+    } else {
+        notification.innerHTML = errorCode("Geolocation is not supported");
+    }
+}
+
 
   searchButton.addEventListener("click", () =>
     getCurrentWeatherData(searchInput.value)
