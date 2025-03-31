@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast Application</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./output.css">
-</head>
-<body>
-    <h1 class="bg-gray-500">Weather Forecast application</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accurate Weather Forecast</title>
+    <meta name="description" content="Get real-time weather updates, accurate forecasts, and local weather conditions. Plan your day with live temperature, rain alerts, and wind speed insights.">
+    <meta name="keywords" content="weather forecast, live weather, local weather, weather updates, temperature, rain alerts, wind speed, weather conditions">
+    <link rel="shortcut icon" href="https://freepngimg.com/download/weather/23529-2-weather-hd.png" type="image/x-icon">
+    <link rel="stylesheet" href="./output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" />
+    <style>
+      * {
+        font-family: "Afacad Flux";
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  </head>
+  <body class="bg-blue-200 min-h-screen">
+    <header class="bg-[#f0f8ff] p-4">
+      <h1 class="text-center text-3xl font-bold text-black">
+        Accurate Weather Forecast
+      </h1>
+    </header>
+    <main
+      class="main max-w-[1200px] p-4 mx-auto grid-cols-1 lg:grid-cols-3 gap-6">
+      <div
+        class="container max-w-lg col-span-1 mx-auto mt-4 bg-[#f0f8ff] h-fit shadow-2xl rounded-xl p-4">
+        <div class="">
+          <div
+            class="flex items-center gap-3 mb-4 ring-red-400 ring-2 hover:ring-4 hover:ring-red-400 shadow-sm rounded-xl">
+            <input
+              type="text"
+              id="search"
+              placeholder="Enter city name"
+              class="p-3 w-full text-lg outline-none" />
+            <button id="searchBtn" class="text-red-400 px-6 py-3">
+              <i class="fa-solid fa-magnifying-glass-location fa-xl"></i>
+            </button>
+          </div>
+          <button
+            id="currentLocation"
+            class="w-full bg-red-400 text-white px-6 py-3 rounded-xl shadow-md hover:bg-red-600 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-location-crosshairs"></i> Use Current Location
+          </button>
+          <div class="recent-searches-container hidden">
+            <p class="mt-4">Recent Searches</p>
+            <select
+              id="recentSearches"
+              class="capitalize w-full p-3 rounded-xl shadow-md text-lg bg-gray-100 ring-2 focus:ring-4 ring-red-400 outline-0">
+              <!-- Options will render dynamically -->
+            </select>
+          </div>
+        </div>
+      </div>
+      <div
+        class="weather-container hide mt-4 w-full col-span-1 lg:col-span-2 gap-3">
+        <div
+          id="currentWeather"
+          class="text-center text-gray-800 text-lg font-semibold">
+          Enter city name / use current location to see weather report...
+        </div>
+
+        <div
+          class="max-w-[1200px] col-span-1 lg:col-span-2 mt-4 mx-auto flex flex-col gap-4 text-gray-800">
+          <h2 class="text-2xl font-semibold text-left text-gray-700">
+             5-Day Forecast <i class="fa-solid fa-cloud"></i>
+          </h2>
+          <div
+            id="forecastWeather"
+            class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          </div>
+        </div>
+      </div>
+      <!-- <div class="text-center mt-4">
+        Enter city name / use current location to see weather report...
+      </div> -->
+      <div class="notification text-center mt-4">
+        Enter city name / use current location to see weather report...
+      </div>
+    </main>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
